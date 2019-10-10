@@ -105,6 +105,21 @@ def Make_Mosaic(image, color_list):
             #paste_image=Image.open(close_image_name)
             new_image.paste(paste_image, (x1, y1))
             '''
+            # 删除已使用
+            close_image_name = close_image_name.replace("./picsDB_HSV/(", "")
+            close_image_name = close_image_name.replace(").png", "")
+            close_image_name = close_image_name.split(", ")
+            temp = []
+            for i in close_image_name:
+                temp.append(float(i))
+            temp.append(1)
+            try:
+                color_list.remove(temp)
+                print(temp)
+            except:
+                pass
+            '''
+            '''
             progress_bar(x1, y1)
             '''
     return new_image

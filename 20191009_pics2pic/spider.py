@@ -27,15 +27,15 @@ for i in range(2, 100):
 				srcstr = item.get('data-lazy')
 			print(item)
 			html = requests.get(srcstr)   # get函数获取图片链接地址，requests发送访问请求
-			img_name = folder_path + str(ind + 1) +'.png'
+			img_name = folder_path + str(ind) +'.png'
 			with open(img_name, 'wb') as file:  # 以byte形式将图片数据写入
 				file.write(html.content)
 				file.flush()
 			file.close()  # 关闭文件
-			print('第%d张图片下载完成' %(ind+1))
+			print('第%d张图片下载完成' %(ind))
 			ind += 1
 			time.sleep(1)  # 自定义延时
-			if ind == 99:
+			if ind % 100 == 0:
 				break
 	page += 1
 	url = url + "?pagi=" + str(page)

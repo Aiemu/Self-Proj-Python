@@ -7,8 +7,9 @@ import os
 import time
 
 
-url  = 'https://pixabay.com/zh/images/search/'
-headers = {'User-Agent': 'Mozilla/5.0'}
+url = 'https://pixabay.com/zh/images/search/'
+URL = 'https://pixabay.com/zh/images/search/'
+headers = {'User-Agent': 'User-Agent:Mozilla/5.0'}
 ind = 1
 page = 1
 
@@ -25,19 +26,20 @@ for i in range(2, 100):
 			srcstr = item.get('src')
 			if srcstr == "/static/img/blank.gif":
 				srcstr = item.get('data-lazy')
-			print(item)
+			print("Downloading Pic", ind)
 			html = requests.get(srcstr)   # get函数获取图片链接地址，requests发送访问请求
 			img_name = folder_path + str(ind) +'.png'
 			with open(img_name, 'wb') as file:  # 以byte形式将图片数据写入
 				file.write(html.content)
 				file.flush()
 			file.close()  # 关闭文件
-			print('第%d张图片下载完成' %(ind))
+			print("Pic", ind, "Download Completed")
 			ind += 1
 			time.sleep(1)  # 自定义延时
 			if ind % 100 == 0:
 				break
 	page += 1
-	url = url + "?pagi=" + str(page)
+	url = URL + "?pagi=" + str(page)
+	print(url)
 
 print('抓取完成')

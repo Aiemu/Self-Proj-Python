@@ -203,10 +203,12 @@ def Mosaic_Image_HSV(size_width_db,
     print("生成的马赛克图片已保存为%s"%IMAGE_SAVE_DIR)
 
 if __name__ =='__main__':
+    wid = int(input("wid: "))
+    hei = int(input("hei: "))
     Mosaic_Image_HSV(size_width_db=16, 
                  size_height_db=9, 
-                 size_width=1904, 
-                 size_height=766, 
+                 size_width=wid, 
+                 size_height=hei, 
                  IMAGE_DIR="./pic.jpg", 
                  image_db_dir="./pics/", 
                  rep_dis=3,

@@ -1,4 +1,6 @@
 import binascii
+import os
+
 KEYS = [0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01]
 
 def printPlay(textStr,line,background):
@@ -72,3 +74,9 @@ backgroundSign = "."
 
 #调用之前定义好的函数，打印最终成果
 printPlay(inpt,lineSign,backgroundSign)
+
+# 语音
+tmp = "say -r 800 "
+tmp += inpt
+os.system(tmp)
+

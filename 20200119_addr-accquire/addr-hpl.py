@@ -33,7 +33,7 @@ def getImgUrl():
         url = sys.argv[1]
     else:
         try:
-            fo = open('tmp.md','r')
+            fo = open('addr.cache','r')
             url = fo.readline()
         except:
             print('Open file \"tmp.md\" failed! Please add an arg as url.')

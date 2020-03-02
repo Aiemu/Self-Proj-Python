@@ -105,9 +105,12 @@ def getImgUrl(url):
     return
 
 if __name__ == '__main__':
-    loc = 0
+    if len(sys.argv) == 1:
+        mode = '1'
+    else: 
+        mode = sys.argv[1]
 
-    mode = input('Random: 0, Cache: 1, Customize: xxxx\n')
+    loc = 0
 
     if mode == '1':
         try:  
@@ -150,6 +153,14 @@ if __name__ == '__main__':
             elif tmp == 'r':
                 loc = 840000 + random.randint(0, 9999)
                 print('New random loc = %d.' % loc)
+        except:
+            loc = 840000 + random.randint(0, 9999)
+
+        print('Results of the work: ' + str(total_dir) + ' dirs, ' + '%d/%d files.' % (total_full, total_down))
+
+        if total_dir % 15 == 0:
+            loc = 840000 + random.randint(0, 9999)
+            print('\n\nChange loc = %d.' % loc)
 
         loc -= 1
 
